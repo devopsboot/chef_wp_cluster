@@ -1,17 +1,18 @@
 3cubes-wordpress Cookbook
 =========================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+Chef cookbook installs/configures WP cluster.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
 #### packages
-- `toaster` - 3cubes-wordpress needs toaster to brown your bagel.
+- `openssl` - cookbook provides tools for working with the Ruby OpenSSL library.
+- `apt` - cookbook includes recipes to execute apt-get update to ensure the local APT package cache is up to date.
+- `apache2` - cookbook provides a complete Debian/Ubuntu style Apache HTTPD configuration.
+- `php` - cookbook installs and configures PHP 5.3 and the PEAR package management system.
+- `tar` - cookbook installs tar and two resources for managing remote tar files.
+- `mysql2_chef_gem` - a library cookbook that provides an LWRP for use in recipes. 
+- `database` - the `database` and `database_user` resources for managing databases and database users in a RDBMS.
 
 Attributes
 ----------
@@ -27,10 +28,28 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['3cubes-wordpress']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['3cubes-wordpress']['server_port']</tt></td>
+    <td>String</td>
+    <td>Port for apache virtualhost</td>
+    <td><tt>'80'</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['3cubes-wordpress']['server_name']</tt></td>
+    <td>String</td>
+    <td>Servername of apache virtualhost</td>
+    <td><tt>node['fqdn']</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['3cubes-wordpress']['server_aliases']</tt></td>
+    <td>String</td>
+    <td>Server alias of apache virtualhost</td>
+    <td><tt>node['fqdn']</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['3cubes-wordpress']['parent_dir']</tt></td>
+    <td>String</td>
+    <td>Apache www directory</td>
+    <td><tt>'/var/www'</tt></td>
   </tr>
 </table>
 
