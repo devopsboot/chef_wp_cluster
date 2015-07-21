@@ -16,9 +16,7 @@ Requirements
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### 3cubes-wordpress::default
 <table>
   <tr>
@@ -51,14 +49,18 @@ e.g.
     <td>Apache www directory</td>
     <td><tt>'/var/www'</tt></td>
   </tr>
+  <tr>
+    <td><tt>['3cubes-wordpress']['dir']</tt></td>
+    <td>String</td>
+    <td>Root directory of virtualhost</td>
+    <td><tt>"#{node['3cubes-wordpress']['parent_dir']}/wordpress"</tt></td>
 </table>
+TODO: Add rest attributes
 
 Usage
 -----
 #### 3cubes-wordpress::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
+To install/configure wordpress application, apache and php modules
 Just include `3cubes-wordpress` in your node's `run_list`:
 
 ```json
@@ -70,11 +72,23 @@ Just include `3cubes-wordpress` in your node's `run_list`:
 }
 ```
 
+#### 3cubes-wordpress::database
+To install/configure mysql database for wordpress
+Just include `3cubes-wordpress` in your node's `run_list`:
+
+```json
+{
+  "name":"my_node",
+  "run_list": [
+    "recipe[3cubes-wordpress::database]"
+  ]
+}
+```
+
+
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
